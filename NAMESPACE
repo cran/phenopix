@@ -1,0 +1,32 @@
+exportPattern("^[^\\.]")	#exports all variables that do not start with a period.
+import(zoo, jpeg, doParallel, foreach, iterators)
+importFrom(plyr, llply, ldply)
+importFrom(SDMTools,pnt.in.poly)
+importFrom(stringr,str_split)
+importFrom(bcp,bcp)
+importFrom(strucchange, breakpoints)
+importFrom(parallel, makeCluster, detectCores, stopCluster)
+importFrom(gtools, ask)
+importFrom(raster, brick, aggregate, plotRGB, raster, as.array)
+importFrom(graphics, plot)
+importFrom(sp, plot)
+importClassesFrom(raster, Extent, BasicRaster, Raster, RasterLayer, RasterBrick, RasterStack, RasterStackBrick)
+importClassesFrom(sp, Spatial)
+importMethodsFrom(raster, plotRGB)
+importFrom("grDevices", "dev.off", "dev.print", "jpeg", "palette",
+             "png", "rainbow")
+importFrom("graphics", "abline", "arrows", "axis", "boxplot", "legend",
+             "lines", "locator", "mtext", "par", "points", "polygon",
+             "rasterImage", "text", "title")
+importFrom("stats", "D", "coef", "coefficients", "confint", "fitted",
+             "formula", "kmeans", "lm", "median", "na.omit", "nls",
+             "optim", "predict", "quantile", "runif", "sd",
+             "smooth.spline", "update", "window")
+importFrom("utils", "tail")
+
+S3method(print, phenopix)
+S3method(summary, phenopix)
+S3method(update, phenopix)
+S3method(fitted, phenopix)
+S3method(plot, phenopix)
+
