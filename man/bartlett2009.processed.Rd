@@ -14,8 +14,10 @@ A complex list accessible via multiple generic functions like \code{plot}, \code
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.processed)
 plot(bartlett2009.processed)
 ## maybe str(bartlett2009.fitted) ; plot(bartlett2009.fitted) ...
+}
 }
 \keyword{datasets}

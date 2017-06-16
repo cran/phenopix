@@ -37,6 +37,7 @@ Currently unused
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.fitted)
 derivatives.phenophases <- PhenoDeriv(
 	x=bartlett2009.fitted$fit$predicted, fit=bartlett2009.fitted$fit
@@ -47,4 +48,5 @@ mtext(names(derivatives.phenophases[c(1:2,4)]),
 	at=derivatives.phenophases[c(1:2,4)], 
 	line=-2, 
 	col=palette()[1:3])
+}
 }

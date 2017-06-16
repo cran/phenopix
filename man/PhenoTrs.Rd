@@ -37,6 +37,7 @@ PhenoTrs(x, approach = c("White", "Trs"), trs = 0.5, min.mean = 0.1,
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.fitted)
 trs.phenophases <- PhenoTrs(
   x=bartlett2009.fitted$fit$predicted, 
@@ -44,4 +45,4 @@ trs.phenophases <- PhenoTrs(
 plot(bartlett2009.fitted$fit$predicted)
 abline(v=trs.phenophases[c(1:2,4)], col=palette())
 }
-
+}

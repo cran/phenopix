@@ -59,6 +59,8 @@ Gianluca Filippa <gian.filippa@gmail.com>
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.filtered)
 fitted <- SplineFit(bartlett2009.filtered, uncert=TRUE, nrep=50)
+}
 }

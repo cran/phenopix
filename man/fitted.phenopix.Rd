@@ -29,6 +29,7 @@ Gianluca Filippa <gian.filippa@gmail.com>
 }
 
 \examples{
+\dontrun{
 library(zoo)
 data(bartlett2009.filtered)
 fitted <- greenProcess(bartlett2009.filtered, 'klosterman', 
@@ -36,4 +37,4 @@ fitted <- greenProcess(bartlett2009.filtered, 'klosterman',
 plot(fitted$data, type='p')
 lines(index(fitted$data), fitted(fitted), col='red')
 }
-
+}

@@ -52,7 +52,7 @@ Scaling factors required to normalize the data prior to the fitting. If the func
 }
   \item{\dots}{
   For the plotting function, a number of parameters from generic \code{plot} 
-  can be specified. See examples. 
+  can be specified.  
   Additionally, a further option to 'trs' method calling \code{PhenoTrs} is provided: by setting a trs argument. 
   The default for trs is 0.5, meaning that the phases sos (start of season) and eos (end of season) will be set when gcc reaches 50\% of maximum on the increasing (sos) and decreasing (eos) seasonal trajectory.  
 }

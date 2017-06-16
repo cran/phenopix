@@ -44,7 +44,7 @@ Gianluca Filippa <gian.filippa@gmail.com>
 \dontrun{
   require(zoo) 
   data(bartlett2009.filtered)
-  combined.fit <- combineUncertainty(na.approx(filtered.tmp$max.filtered), nrep=100)
+  combined.fit <- combineUncertainty(na.approx(bartlett2009.filtered), nrep=100)
 # 100 replications for each fitting
   names(combined.fit) # a dataframe for each phenoMethod + a list with all fittings
   fit.summary <- summarizePhases(combined.fit, across.methods=TRUE)

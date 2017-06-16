@@ -102,6 +102,7 @@ Papale et al.
 }
 
 \examples{
+\dontrun{
 data(bartlett2009)
 ## with raw.dn ==TRUE and column position for chromatic coordinates
 par(mfrow=c(3,1), oma=c(5,4,4,2), mar=rep(0,4))
@@ -119,4 +120,4 @@ filtered.data <- autoFilter(bartlett2009, dn=c(5:7),
 ## check filter names
 names(filtered.data)
 }
-
+}

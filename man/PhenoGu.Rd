@@ -84,6 +84,7 @@ PhenoGu in a for loop cycling in the uncertainty dataframe columns.
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.fitted)
 gu.phenophases <- PhenoGu(x=bartlett2009.fitted$fit$params, 
 	fit=bartlett2009.fitted$fit, sf=quantile(bartlett2009.fitted$fit$predicted, c(0.1, 0.9)))
@@ -91,6 +92,7 @@ plot(bartlett2009.fitted$fit$predicted)
 abline(v=gu.phenophases[1:4], col=palette())
 mtext(names(gu.phenophases[1:4]), at=gu.phenophases[1:4], 
 	line=-2:-5, col=palette()[1:4])
+}
 }
 
 

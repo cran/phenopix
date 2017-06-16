@@ -49,9 +49,10 @@ Gianluca Filippa <gian.filippa@gmail.com>
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.filtered)
 fitted <- greenProcess(bartlett2009.filtered, 'klosterman', 
   'klosterman', plot=FALSE)
 fitted.gu <- update(fitted, 'gu')
 }
-
+}

@@ -78,6 +78,7 @@ in a for loop cycling in  the uncertainty dataframe columns.
 }
 
 \examples{
+\dontrun{
 data(bartlett2009.fitted)
 klosterman.phenophases <- PhenoKl(
 	x=bartlett2009.fitted$fit$params, 
@@ -87,5 +88,6 @@ abline(v=klosterman.phenophases[1:4], col=palette())
 mtext(names(klosterman.phenophases[1:4]), 
 	at=klosterman.phenophases[1:4], line=-2:-5, 
 	col=palette()[1:4])
+}
 }
 
