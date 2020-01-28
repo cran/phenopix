@@ -1,16 +1,17 @@
 exportPattern("^[^\\.]")	#exports all variables that do not start with a period.
 import(zoo, jpeg, doParallel, foreach, iterators)
 importFrom(plyr, llply, ldply)
-importFrom(SDMTools,pnt.in.poly)
 importFrom(stringr,str_split)
 importFrom(bcp,bcp)
 importFrom(strucchange, breakpoints)
 importFrom(parallel, makeCluster, detectCores, stopCluster)
 importFrom(gtools, ask)
-importFrom(raster, brick, aggregate, plotRGB, raster, as.array)
+importFrom(raster, brick, aggregate, plotRGB, raster, as.array, values, 
+coordinates, rasterToContour, drawPoly, bind, mask, shift, extent, resample)
 importFrom(graphics, plot)
-importFrom(sp, plot)
-importClassesFrom(raster, Extent, BasicRaster, Raster, RasterLayer, RasterBrick, RasterStack, RasterStackBrick)
+importFrom(sp, plot, Polygon, Polygons, SpatialPolygons)
+importClassesFrom(raster, Extent, BasicRaster, Raster, RasterLayer, 
+RasterBrick, RasterStack, RasterStackBrick)
 importClassesFrom(sp, Spatial)
 importMethodsFrom(raster, plotRGB)
 importFrom("grDevices", "dev.off", "dev.print", "jpeg", "palette",

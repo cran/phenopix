@@ -8,7 +8,7 @@ Extract exposure from stardot (or similar) images
 This function allows to extract exposure from a set of binary images. It is currently optimized for stardot cameras.   
 }
 \usage{
-getExposure(ipath, coords, train.data=FALSE, date.code, sample=NULL)
+getExposure(ipath, coords, train.data=FALSE, date.code, sample=NULL, begin=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -28,6 +28,12 @@ getExposure(ipath, coords, train.data=FALSE, date.code, sample=NULL)
   \item{sample}{
   If NULL (default) all images in the folder are processed, otherwise an integer specifying how many files must be processed. 
   This is useful if you want to check some extractions without processing the whole folder.   
+}
+  \item{begin}{
+  The user can provide a beginning date as a character string in the form 'YYYY-MM-DD'. Images 
+  with a time stamp earlier than the provided date will be discarded. Default is NULL and the whole
+  time series will be processed. Useful when updating an existing time series.
+%%     ~~Describe \code{plot} here~~
 }
 }
 \details{

@@ -2,11 +2,11 @@
 \alias{convert}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to convert in data.frame a \code{zoo} or \code{ts} objct  
+A function to convert in data.frame a \code{zoo} or \code{ts} object  
 }
 \description{
-This function converts an object of class \code{ts} or \code{zoo} in a dataframe with a column 
-named \code{time} retrived from index(x). It is designed for those unfamiliar with time series
+This function converts an object of class \code{ts} or \code{zoo} in a data.frame with a column 
+named \code{time} retrieved from \code{index(x)}. It is designed for those unfamiliar with time series
 objects. 
 }
 \usage{

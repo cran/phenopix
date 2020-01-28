@@ -2,7 +2,7 @@
 \alias{plotSum}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-An evolution of \code{\link{greenProcess}} for the combination of uncertainty after processing 
+A plotting facility to show the combination of uncertainty
 }
 \description{
 The \code{combineUncertainty} uses \code{\link{greenProcess}} to fit all available double logistic equations in the phenopix package and extracts thresholds with all available methods. Then uncertainties can be combined and returned by using \code{\link{summarizePhases}} and plotted with \code{\link{plotSum}}. 
@@ -36,8 +36,8 @@ If TRUE, the plotted uncertainty envelope is based on the quantiles, and not min
 }
 }
 \details{
-This function uses \code{\link{greenProcess}} to fit all available double logistic equations in the phenopix package and extracts thresholds with all available methods. Then uncertainties can be combined and returned by using \code{\link{summarizePhases}} and plotted with \code{\link{plotSum}}. 
-See \code{\link{greenProcess}}, \code{\link{summarizePhases}}, \code{\link{plotSum}}. This function uses a modellistic approach to combine all uncertainties from all available phenopix fittings, as to get an ensemble of phases with different methods, without necessarily choosing any of them. 
+This function is the last step of a processing chain. It uses \code{\link{greenProcess}} to fit all available double logistic equations in the phenopix package and extracts thresholds with all available methods. Then uncertainties can be combined and returned by using \code{\link{summarizePhases}} and plotted with \code{\link{plotSum}}. 
+See \code{\link{greenProcess}}, \code{\link{summarizePhases}}, \code{\link{plotSum}}. This function uses a model approach to combine all uncertainties from all available phenopix fittings, as to get an ensemble of phases with different methods, without necessarily choosing any of them. 
 }
 
 \value{

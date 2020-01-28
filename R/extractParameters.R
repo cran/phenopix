@@ -18,7 +18,7 @@ if (!is.null(update)) {
 	names(df.exit) <- c(names(metrics.tmp), names(params.tmp), 'RMSE')	
 	for (a in 1:length(list)) {
 		act.element <- list[[a]]
-	if (class(act.element)=='try-error') {
+	if (class(act.element)=='try-error' | is.na(act.element)) {
 		exit.row <- rep(NA, gl.length)
 	} else {
 	if (!is.null(update)) {

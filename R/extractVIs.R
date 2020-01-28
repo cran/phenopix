@@ -1,15 +1,16 @@
 extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, begin=NULL, spatial=FALSE, date.code, npixels=1, 
-  file.type='.jpg', bind=FALSE, ncores='all', log.file=NULL) {     
+  file.type='.jpg', bind=FALSE, shift.matrix=NULL, ncores='all', log.file=NULL) {     
   roi.data <- NULL
   load(paste(roi.path,'/roi.data.Rdata',sep=''))
   if (is.null(roi.name)) {    
     roi.name <- names(roi.data)        
-  } 
-  
+  }   
   roi.pos <- which(names(roi.data) %in% roi.name == TRUE)
-  
-  files <-list.files(path=img.path,recursive=TRUE, pattern = file.type)
+  if (length(img.path)==1)  files <-list.files(path=img.path,recursive=TRUE, pattern = file.type) else files <- img.path
   n_files <-length(files)
+  if (is.null(shift.matrix)) {
+  shift.matrix <- data.frame(x=rep(0,n_files), y=0)
+}
   dates <- as.POSIXct(sapply(files, extractDateFilename, date.code=date.code), origin='1970-01-01')
   if (any(is.na(dates))) stop(paste('Something wrong in your date!'))
 
@@ -22,19 +23,22 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
     }
     files <- files[pos.good]
     n_files <- length(files)  
-    if (npixels!=1) {
-      r <- brick(paste(img.path,'/',files[1],sep=''))
-      aggregated.r <- aggregate(r,npixels)
-      back.array <- raster::as.array(aggregated.r)
-      sample.img <- back.array/255    
-      roi.data <- updateROI(roi.data, sample.img)
-    }  
+    # if (npixels!=1) {
+    #   r <- brick(paste(img.path,'/',files[1],sep=''))
+    #   aggregated.r <- aggregate(r,npixels)
+    #   back.array <- as.array(aggregated.r)
+    #   sample.img <- back.array/255    
+    #   roi.data <- updateROI(roi.data, sample.img) ## da gestire
+    # }  
     if (spatial==FALSE) {
       VI.data <- list()  
   #loop trough ROIs
+  roi.counter <- 0
+  total.images <- n_files*length(roi.pos)
       for (roi in roi.pos) {   
-        temp.roi <- roi.data[[roi]]
-        pos.pix.roi <- which(temp.roi$pixels.in.roi$pip == 1)
+        temp.roi <- roi.data[[roi]]$mask
+        temp.polygon <- roi.data[[roi]]$polygons
+        raster::values(temp.roi)[values(temp.roi) == 0] <- NA
         VI.data.roi <- NULL
     ## loop trough images
         if (ncores=='all') cores <- detectCores() else cores <- ncores
@@ -47,7 +51,7 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
         VI.data.roi <- foreach(img=1:n_files, .packages=c('raster', 'phenopix'), .combine=rbind) %dopar% {
          if (!is.null(log.file)) {
           sink(paste(log.file, "log.txt", sep='/'), append=TRUE)  
-          cat(paste(round(img/n_files*100), '% done\n'))
+          cat(paste(round((img +(roi.counter*n_files))/total.images*100), '% done\n'))
           sink() 
         }
       ## check date and begin
@@ -56,34 +60,45 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
         # print (files[img])      
       # temp.img <- readJpeg(paste(img.path,'/',files[img],sep=''))
         r <- brick(paste(img.path,'/',files[img],sep=''))
-        if (npixels!=1) aggregated.r <- aggregate(r,npixels) else aggregated.r <- r
-        red <- raster::as.array(raster(aggregated.r, 1))[,,1]
-        green <- raster::as.array(raster(aggregated.r, 2))[,,1]
-        blue <- raster::as.array(raster(aggregated.r,3))[,,1]
-        red[temp.roi$pixels.in.roi$pip==0] <- NA
-        green[temp.roi$pixels.in.roi$pip==0] <- NA
-        blue[temp.roi$pixels.in.roi$pip==0] <- NA
-        temp.r.av <- mean(red, na.rm=TRUE)
-        temp.g.av <- mean(green, na.rm=TRUE)
-        temp.b.av <- mean(blue, na.rm=TRUE)
-        temp.r.sd <- sd(red, na.rm=TRUE)
-        temp.g.sd <- sd(green, na.rm=TRUE)
-        temp.b.sd <- sd(blue, na.rm=TRUE)
-        temp.bri.av <- mean(red + green + blue, na.rm=TRUE)
-        temp.bri.sd <- sd(red + green + blue, na.rm=TRUE)
-        temp.gi.av <- mean(green/(red + green + blue),na.rm=TRUE)
-        temp.gi.sd <- sd(green/(red + green + blue),na.rm=TRUE)
-        temp.gei.av <- mean( 2*green - (red + blue),na.rm=TRUE)
-        temp.gei.sd <- sd( 2*green - (red + blue),na.rm=TRUE)
-        temp.ri.av <- mean(red/(red + green + blue),na.rm=TRUE)
-        temp.ri.sd <- sd(red/(red + green + blue),na.rm=TRUE)
-        temp.bi.av <- mean(blue/(red + green + blue),na.rm=TRUE)
-        temp.bi.sd <- sd(blue/(red + green + blue),na.rm=TRUE)
+        ## to handle roi shift
+        roi.in.loop <- temp.roi
+        act.shift <- shift.matrix[img,,drop=TRUE]
+        shifted.polygon <- shift(temp.polygon, act.shift$x, act.shift$y)
+        raster::values(roi.in.loop) <- 1
+        roi.shifted <- mask(roi.in.loop, shifted.polygon)
+        raster::values(roi.shifted)[is.na(values(roi.shifted))] <- 0
+        if (npixels!=1) {
+          aggregated.r <- aggregate(r,npixels)
+          aggregated.mask <- aggregate(roi.shifted,npixels)
+          } else {
+            aggregated.r <- r
+            aggregated.mask <- roi.shifted
+}
+        red <- aggregated.r[[1]]*aggregated.mask
+        green <- aggregated.r[[2]]*aggregated.mask
+        blue <- aggregated.r[[3]]*aggregated.mask
+        temp.r.av <- mean(values(red), na.rm=TRUE)
+        temp.g.av <- mean(values(green), na.rm=TRUE)
+        temp.b.av <- mean(values(blue), na.rm=TRUE)
+        temp.r.sd <- sd(values(red), na.rm=TRUE)
+        temp.g.sd <- sd(values(green), na.rm=TRUE)
+        temp.b.sd <- sd(values(blue), na.rm=TRUE)
+        temp.bri.av <- mean(values(red) + values(green) + values(blue), na.rm=TRUE)
+        temp.bri.sd <- sd(values(red) + values(green) + values(blue), na.rm=TRUE)
+        temp.gi.av <- mean(values(green)/(values(red) + values(green) + values(blue)),na.rm=TRUE)
+        temp.gi.sd <- sd(values(green)/(values(red) + values(green) + values(blue)),na.rm=TRUE)
+        temp.gei.av <- mean( 2*values(green) - (values(red) + values(blue)),na.rm=TRUE)
+        temp.gei.sd <- sd( 2*values(green) - (values(red) + values(blue)),na.rm=TRUE)
+        temp.ri.av <- mean(values(red)/(values(red) + values(green) + values(blue)),na.rm=TRUE)
+        temp.ri.sd <- sd(values(red)/(values(red) + values(green) + values(blue)),na.rm=TRUE)
+        temp.bi.av <- mean(values(blue)/(values(red) + values(green) + values(blue)),na.rm=TRUE)
+        temp.bi.sd <- sd(values(blue)/(values(red) + values(green) + values(blue)),na.rm=TRUE)
         temp.doy <- as.numeric(format(temp.date,format="%j"))
         temp.VI <- data.frame(date = temp.date, doy = temp.doy, r.av = temp.r.av, g.av = temp.g.av, b.av = temp.b.av, r.sd = temp.r.sd, g.sd = temp.g.sd, b.sd = temp.b.sd, bri.av = temp.bri.av, bri.sd = temp.bri.sd,
           gi.av = temp.gi.av, gi.sd = temp.gi.sd, gei.av = temp.gei.av, gei.sd = temp.gei.sd, ri.av = temp.ri.av, ri.sd = temp.ri.sd, bi.av = temp.bi.av, bi.sd = temp.bi.sd)      
       } #endfor loop images  
       stopCluster(cl)
+      roi.counter  <- roi.counter +1
       end <- max(VI.data.roi$date, na.rm=TRUE)  
       if (end < beg.date) stop('Your begin date is later than last record in your timeseries')
         end <- trunc(end, 'day')
@@ -129,8 +144,8 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
   } else {## if spatial == TRUE
   VI.data <- list()
   for (roi in roi.pos) {    
-    temp.roi <- roi.data[[roi]]
-    pos.pix.roi <- which(temp.roi$pixels.in.roi$pip == 1)
+    temp.roi <- roi.data[[roi]]$mask
+    raster::values(temp.roi)[values(temp.roi) == 0] <- NA
     #loop trough images
         if (ncores=='all') cores <- detectCores() else cores <- ncores
         cl <- makeCluster(cores)
@@ -138,7 +153,6 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
     # cl <- makeCluster(detectCores()-1)
         # registerDoParallel(cl)
         if (!is.null(log.file)) writeLines(c(""), paste(log.file, "log.txt", sep='/'))
-          img <- NULL    
     img <- NULL
     VI.data.roi <- foreach(img=1:n_files, .packages=c('raster', 'phenopix')) %dopar% {
      if (!is.null(log.file)) {
@@ -154,12 +168,24 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
     #   }
     # print (files[img])
     r <- brick(paste(img.path,'/',files[img],sep=''))
-    if (npixels!=1) aggregated.r <- aggregate(r,npixels) else aggregated.r <- r
-      # temp.img <- readJpeg(paste(img.path,'/',files[img],sep=''))
-      # temp.img <- readJPEG(paste(img.path,'/',files[img],sep=''))
-    red <- raster::as.array(raster(aggregated.r, 1))[,,1]
-    green <- raster::as.array(raster(aggregated.r, 2))[,,1]
-    blue <- raster::as.array(raster(aggregated.r,3))[,,1]
+            roi.in.loop <- temp.roi
+        act.shift <- shift.matrix[img,,drop=TRUE]
+        shifted.polygon <- shift(temp.polygon, act.shift$x, act.shift$y)
+        raster::values(roi.in.loop) <- 1
+        roi.shifted <- mask(roi.in.loop, shifted.polygon)
+        raster::values(roi.shifted)[is.na(values(roi.shifted))] <- 0
+
+        if (npixels!=1) {
+          aggregated.r <- aggregate(r,npixels)
+          aggregated.mask <- aggregate(roi.shifted,npixels)
+          } else {
+            aggregated.r <- r
+            aggregated.mask <- roi.shifted
+}
+    red <- aggregated.r[[1]]*aggregated.mask
+        green <- aggregated.r[[2]]*aggregated.mask
+        blue <- aggregated.r[[3]]*aggregated.mask
+    pos.pix.roi <- which(!is.na(values(aggregated.mask)))    
     all.reds <- red[pos.pix.roi] 
     all.greens <- green[pos.pix.roi] 
     all.blue <- blue[pos.pix.roi] 

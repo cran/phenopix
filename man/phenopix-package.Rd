@@ -13,8 +13,8 @@ trajectories and extract relevant phenological stages.
 \tabular{ll}{
 Package: \tab phenopix\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2014-08-21\cr
+Version: \tab 3.2.3\cr
+Date: \tab 2020-01-24\cr
 License: \tab GPL-2\cr
 }
 
@@ -56,16 +56,28 @@ Ecosystems that show multiple seasonal peaks can be splitted in subseason with
 the \code{CutSeason} function and processed separately. 
 Dedicated plotting functions provide an easy way to look at fitting and thresholding 
 with annotated graphs. 
-The package is beeing tested on the PHENOCAM dataset (http://phenocam.sr.unh.edu/webcam/), 
+The package is being tested on the PHENOCAM dataset (http://phenocam.sr.unh.edu/webcam/), 
 and constantly debugged. 
 
 In the example section the user can find a walk-through to understand main functions, 
 from the filtering step forward. ROI selection and index calculations are excluded 
-from the example because they require the use of locator from the user. 
+from the example because they require the use of locator from the user.
+
+Recent changes:
+
+As from version 2.4 the function drawROI was substituted by the function drawMULTIROI.
+This implies few changes: the object roi.data is no longer structured as before. 
+Now it is a list with an element for each ROI. For each element, there is an item 
+named `mask' containing  the binary raster mask (dimensions and resolution as pixel 
+size of the original image where ROI was drawn) and polygons (an object of class 
+SpatialPolygons). The relevant changes in a processing chain that may occur due to 
+these changes are partially accommodated with the new function \code{convertROI}. 
+
+
 }
 
 \author{
-Gianluca Filippa, Edoardo Cremonese, Mirco Migliavacca, ... 
+Gianluca Filippa, Edoardo Cremonese, Mirco Migliavacca, Jeroen Staab 
 
 Maintainer: Gianluca Filippa <gian.filippa@gmail.com>
 }

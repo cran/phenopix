@@ -1,7 +1,8 @@
 greenClusters <- function(data.clusters, data.curve=NULL, nclusters, formula=NULL, plot=TRUE) {
   params <- data.curve
   data <- data.clusters
-  na.pos <- which(is.na(data[,1]))
+  na.omit.data <- na.omit(data)
+  na.pos <- attr(na.omit.data, 'na.action')
   fit <- kmeans(scale(na.omit(data)), nclusters)
   fit.filled <- rep(NA, length(data[,1]))
   if (length(na.pos)!=0) fit.filled[-na.pos] <- fit$cluster else fit.filled <- fit$cluster

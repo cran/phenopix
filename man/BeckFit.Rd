@@ -2,7 +2,7 @@
 \alias{BeckFit}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to fit a double logisitic function to a vector according to Beck et al. (2006)  
+A function to fit a double logistic function to a vector according to Beck et al. (2006)  
 }
 \description{
  This function fits a double logistic curve to observed values using the

@@ -13,12 +13,12 @@ region of interest of a jpeg image.
 \usage{
 extractVIs(img.path, roi.path, vi.path = NULL, roi.name = NULL, 
   plot = TRUE, begin = NULL, spatial = FALSE, date.code, 
-  npixels=1, file.type='.jpg', bind=FALSE, ncores='all', log.file=NULL)
+  npixels=1, file.type='.jpg', bind=FALSE, shift.matrix=NULL, ncores='all', log.file=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{img.path}{
-  Path to images
+  Path to image folder, or a vector with all image files (full path mandatory) 
 %%     ~~Describe \code{img.path} here~~
 }
   \item{roi.path}{
@@ -64,6 +64,9 @@ extractVIs(img.path, roi.path, vi.path = NULL, roi.name = NULL,
   \item{bind}{
 If TRUE and argument begin is defined, then new VI.data are binded to already existing data and overwritten, after checking for duplicated records 
 (and returning a warning in case there are).  
+}
+  \item{shift.matrix}{
+If non NULL a matrix of two-dimentional shifts to adjust ROI masks to accommodate for field-of-view shifts.  
 }
   \item{ncores}{
 Number of processors to be used in parallel computation, defaults to 'all' which will accidentally slow down any other activity on your computer. Otherwise set the number of processors you want to use in parallelization. 

@@ -14,13 +14,13 @@ editExposure(exposures, image.path, which)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{exposures}{
-A dataframe with the exposures as in output from \code{\link{getExposure}}
+A \code{data.frame} with the exposures as in output from \code{\link{getExposure}}
 }
   \item{image.path}{
   The path to the folder where the images are stored, from which exposures were extracted
 }
   \item{which}{
-A vector with row positions in your dataframe where exposures must be converted. 
+A vector with row positions in your \code{data.frame} where exposures must be converted. 
 }
 }
 \details{
@@ -28,7 +28,7 @@ After the extraction of exposure via the \code{\link{getExposure}} function, som
 }
 
 \value{
- The corrected exposures dataframe.
+ The corrected exposures \code{data.frame}.
  }
 
 \author{

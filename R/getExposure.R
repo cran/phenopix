@@ -1,4 +1,4 @@
-getExposure <- function(ipath, coords, train.data=FALSE, date.code, sample=NULL) {
+getExposure <- function(ipath, coords, train.data=FALSE, date.code, sample=NULL, begin=NULL) {
 	## define number converter function
 	.number.converted <- function(x) {
 		num.conv <- x
@@ -41,7 +41,19 @@ getExposure <- function(ipath, coords, train.data=FALSE, date.code, sample=NULL)
 	## get image file names 
 	all.jpeg.files.full <- list.files(ipath, full.names=TRUE, recursive=TRUE)[the.sample]
 	all.jpeg.files <- list.files(ipath, recursive=TRUE)[the.sample]	
-	## loop of exposure
+	date.stamp <- sapply(as.character(all.jpeg.files), FUN=extractDateFilename, date.code=date.code)
+	date.stamp <- as.POSIXct(date.stamp, origin='1970-01-01')
+ 	  if (!is.null(begin)) {
+      beg.date <- as.POSIXct(begin, origin='1970-01-01')
+      pos.good <- which(date.stamp >= beg.date)          
+    } else {
+      pos.good <- 1:length(date.stamp)
+      beg.date <- as.POSIXct('1970-01-01')
+    }
+ 	## loop of exposure
+ 	all.jpeg.files <- all.jpeg.files[pos.good]
+ 	all.jpeg.files.full <- all.jpeg.files.full[pos.good]
+ 	date.stamp <- date.stamp[pos.good]
 	exposure.final <- data.frame(image=all.jpeg.files, exposure=NA)
 	for (tt in 1:nrow(exposure.final)) {
 
@@ -224,8 +236,6 @@ getExposure <- function(ipath, coords, train.data=FALSE, date.code, sample=NULL)
 		}
 	}
 	## convert date stamp
-	date.stamp <- sapply(as.character(exposure.final$image), FUN=extractDateFilename, date.code=date.code)
-	date.stamp <- as.POSIXct(date.stamp, origin='1970-01-01')
 	exposure.final$timestamp <- date.stamp
 	nfail <- length(which(is.na(exposure.final$exposure)))/dim(exposure.final)[1]*100
 	if (nfail>10) warning(paste0('You failed ', round(nfail), '% of exposure retrieval, consider shifting \n your x1 coord 5 pixels on the left'))
