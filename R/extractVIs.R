@@ -6,7 +6,10 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
     roi.name <- names(roi.data)        
   }   
   roi.pos <- which(names(roi.data) %in% roi.name == TRUE)
-  if (length(img.path)==1)  files <-list.files(path=img.path,recursive=TRUE, pattern = file.type) else files <- img.path
+  if (length(img.path)==1)  files <-list.files(path=img.path,recursive=TRUE, pattern = file.type) else {
+    files <- img.path
+    img.path <- ''
+  }
   n_files <-length(files)
   if (is.null(shift.matrix)) {
   shift.matrix <- data.frame(x=rep(0,n_files), y=0)
@@ -66,7 +69,7 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
         shifted.polygon <- shift(temp.polygon, act.shift$x, act.shift$y)
         raster::values(roi.in.loop) <- 1
         roi.shifted <- mask(roi.in.loop, shifted.polygon)
-        raster::values(roi.shifted)[is.na(values(roi.shifted))] <- 0
+        raster::values(roi.shifted)[is.na(values(roi.shifted))] <- NA
         if (npixels!=1) {
           aggregated.r <- aggregate(r,npixels)
           aggregated.mask <- aggregate(roi.shifted,npixels)

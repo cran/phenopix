@@ -1,4 +1,4 @@
-5e30bd9364a71549d62f4bea0734a0ed *DESCRIPTION
+66472fe41a0cec9a9e1674fb1bfdd689 *DESCRIPTION
 1af15746cb7ecbb9c68eeedd36e3e463 *NAMESPACE
 8baf46f34d71e57a2747a2da91179e79 *R/BeckFit.R
 0a5f4e64270b2afc0f0be9a897ba1bba *R/CutSeason.R
@@ -30,7 +30,7 @@ b1b80ba22242971c58c33b171875e3b5 *R/autoFilter.R
 cccbc2abf8daac7127ab813670b76d9e *R/extract.R
 286e41e8c0cb431941bc3838c66aa22b *R/extractDateFilename.R
 0f4f344588196b90f6532ced6a4c2b51 *R/extractParameters.R
-80c012041b91e6e73f7b2a87963fc40d *R/extractVIs.R
+b38e99c609119e6a0f121aab55c643e5 *R/extractVIs.R
 9ef9f9371e8e6fba9683b935018c5347 *R/fitted.phenopix.R
 49a62361ad84b4d4eae85e926891ad4f *R/get.options.R
 af44b5db75a9774c703137feb7e27f25 *R/getCoords.R
@@ -57,10 +57,10 @@ ddd873bc81cff6d2cef8f27f7bc64510 *R/spatialFilter.R
 4b0eebc972523d6dc643cbd9b04b919f *R/trainOCR.R
 1d16311bc5a4494393f34b0a330fdd28 *R/update.phenopix.R
 2604557cca2739e80c0a46fdf1bdf5d9 *R/updateROI.R
-aed427f65995d0118fe67bfe0d960357 *data/bartlett2009.filtered.rda
-a6707094ae7e53362a812c10e20f9eab *data/bartlett2009.fitted.rda
-ee317642773b33c0dda9dff38e092ac5 *data/bartlett2009.processed.rda
-03166660f1f8028c0e92bf8c4e8ff3e3 *data/bartlett2009.rda
+74b93d836c62217e3af771db8ae47a82 *data/bartlett2009.filtered.rda
+08f242691022d6d46852f8f14c0acb57 *data/bartlett2009.fitted.rda
+e23c8bdadf3f1f48e04194fa26e13890 *data/bartlett2009.processed.rda
+8eef7e5339671975c5ea84e2df4ae8f9 *data/bartlett2009.rda
 90d87130a638084cf627d5685b4b9b7b *man/BeckFit.Rd
 d499f27c8c7ce6ddec184f01fe3ae39c *man/CutSeason.Rd
 99ccfa2ea0670e9b78397c81f209a0da *man/DrawMULTIROI.Rd
@@ -95,7 +95,7 @@ ebde38bb8ccdc733b4aa3d08d183a8fe *man/editExposure.Rd
 73aa3dc3ac8df27a1fbd4b04f0982bc0 *man/extract.Rd
 c0e590e26ce3f9f6b9309bc0d0871a6a *man/extractDateFilename.Rd
 de0df6563eb2571cb3ce77aa931373f5 *man/extractParameters.Rd
-334ae1e0182b92af84191176ee48bb03 *man/extractVIs.Rd
+e3d42b8fb882a8d3e922ac8c3b2b2e62 *man/extractVIs.Rd
 72ae973d940c5217d44885554b1073b7 *man/fitted.phenopix.Rd
 dc1ba07f2b3f4e57e163da865f55708c *man/get.options.Rd
 45c36114ff7d0411c875bbe83f44aff9 *man/getCoords.Rd

@@ -66,7 +66,7 @@ If TRUE and argument begin is defined, then new VI.data are binded to already ex
 (and returning a warning in case there are).  
 }
   \item{shift.matrix}{
-If non NULL a matrix of two-dimentional shifts to adjust ROI masks to accommodate for field-of-view shifts.  
+If non NULL a matrix of two-dimentional shifts to adjust ROI masks to accommodate for field-of-view shifts. This subject will be soon implemented in the package.  
 }
   \item{ncores}{
 Number of processors to be used in parallel computation, defaults to 'all' which will accidentally slow down any other activity on your computer. Otherwise set the number of processors you want to use in parallelization. 
