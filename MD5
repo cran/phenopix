@@ -1,4 +1,4 @@
-66472fe41a0cec9a9e1674fb1bfdd689 *DESCRIPTION
+e5cc8b0d4013e4fd0853374a16d91b62 *DESCRIPTION
 1af15746cb7ecbb9c68eeedd36e3e463 *NAMESPACE
 8baf46f34d71e57a2747a2da91179e79 *R/BeckFit.R
 0a5f4e64270b2afc0f0be9a897ba1bba *R/CutSeason.R
@@ -25,12 +25,12 @@ aa45c0e46ca49c5250139ad8c89814de *R/PrintROI.R
 b1b80ba22242971c58c33b171875e3b5 *R/autoFilter.R
 8df76bb8706129082362ac3db4f3a0a7 *R/combineUncertainty.R
 6fd3b21c92ad3185f618e71567a78cc7 *R/convert.R
-5cd8a7190af60d36c60091d6c425b006 *R/convertROI.R
+333de6b568fdfc4210e401fc05508684 *R/convertROI.R
 461d454516fe8f9d7d98807b5a72c3cb *R/editExposure.R
 cccbc2abf8daac7127ab813670b76d9e *R/extract.R
 286e41e8c0cb431941bc3838c66aa22b *R/extractDateFilename.R
 0f4f344588196b90f6532ced6a4c2b51 *R/extractParameters.R
-b38e99c609119e6a0f121aab55c643e5 *R/extractVIs.R
+f6febac99aaa304a98a8168a85f63d6d *R/extractVIs.R
 9ef9f9371e8e6fba9683b935018c5347 *R/fitted.phenopix.R
 49a62361ad84b4d4eae85e926891ad4f *R/get.options.R
 af44b5db75a9774c703137feb7e27f25 *R/getCoords.R
@@ -43,7 +43,7 @@ d8510ffa0b9a77f329b89f863ef85851 *R/greenProcess.R
 8e6d720e3c69a86fb1e5445417037b27 *R/plot.phenopix.R
 9f33ce357a96c61bacc91c44e8fd325b *R/plotBP.R
 c6addf9773423a12902e77eb316e8361 *R/plotExplore.R
-bc9782e6e0791e86474f53c152e19fee *R/plotSpatial.R
+8d27d655372b40d47a4df2ffbabd2557 *R/plotSpatial.R
 778150965c283f9ce8544d545c02ba86 *R/plotSum.R
 1adac76cba5105bac900b275352f51f9 *R/plotVI.R
 73d07e3e3e74fcbaf270e6754b9427d0 *R/print.phenopix.R

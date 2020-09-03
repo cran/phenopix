@@ -1,8 +1,8 @@
 Package: phenopix
 Type: Package
 Title: Process Digital Images of a Vegetation Cover
-Version: 2.4.1
-Date: 2020-05-06
+Version: 2.4.2
+Date: 2020-09-03
 Author: Gianluca Filippa, Edoardo Cremonese, Mirco Migliavacca, Marta Galvagno, Matthias Folker, Andrew D. Richardson, Enrico Tomelleri 
 Maintainer: Gianluca Filippa <gian.filippa@gmail.com>
 Description: A collection of functions to process digital images, depict greenness index trajectories and extract relevant phenological stages. 
@@ -12,6 +12,6 @@ Imports: zoo, plyr, jpeg, stringr (>= 1.0.0), bcp, strucchange,
 License: GPL-2
 LazyLoad: yes
 NeedsCompilation: no
-Packaged: 2020-06-06 18:47:50 UTC; gian
+Packaged: 2020-09-03 15:39:48 UTC; gian
 Repository: CRAN
-Date/Publication: 2020-06-06 19:20:02 UTC
+Date/Publication: 2020-09-03 16:22:11 UTC

@@ -172,11 +172,13 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
     # print (files[img])
     r <- brick(paste(img.path,'/',files[img],sep=''))
             roi.in.loop <- temp.roi
-        act.shift <- shift.matrix[img,,drop=TRUE]
-        shifted.polygon <- shift(temp.polygon, act.shift$x, act.shift$y)
-        raster::values(roi.in.loop) <- 1
-        roi.shifted <- mask(roi.in.loop, shifted.polygon)
-        raster::values(roi.shifted)[is.na(values(roi.shifted))] <- 0
+        # act.shift <- shift.matrix[img,,drop=TRUE]
+        # shifted.polygon <- shift(temp.polygon, act.shift$x, act.shift$y)
+        # raster::values(roi.in.loop) <- 1
+        # roi.shifted <- mask(roi.in.loop, shifted.polygon)
+        roi.shifted <- roi.in.loop 
+        # roi.shifted[roi.shifted==0] <- NA   
+        raster::values(roi.shifted)[is.na(values(roi.shifted))] <- NA
 
         if (npixels!=1) {
           aggregated.r <- aggregate(r,npixels)

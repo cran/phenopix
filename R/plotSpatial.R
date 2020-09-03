@@ -31,7 +31,7 @@ plotSpatial <- function(data, param, roi.data.path, image.path, probs=c(0.01, 0.
 		quantiles <- quantile(the.data, probs, na.rm=TRUE)
 		the.data[the.data<quantiles[1]] <- NA
 		the.data[the.data>quantiles[2]] <- NA
-		raster::values(phase)[values(roi.data[[a]]$mask) ==1] <- the.data	
+		raster::values(phase)[values(roi.data.ordered[[a]]$mask) ==1] <- the.data	
 		}
 		suppressWarnings(plot(phase, add=TRUE, ...))
 	}

@@ -4,7 +4,6 @@ convertROI <- function(path_img_ref,path_ROIs, file.type='.jpg') {
 	file <- list.files(path=path_img_ref,pattern = file.type)
     # img<-readJpeg(paste(path_img_ref,file,sep=""))
     img <- brick(paste(path_img_ref,file,sep="/"))
-    load(paste0(''))
     rois <- paste(path_ROIs, 'roi.data.Rdata', sep='')
     roi.data <- NULL
     load(rois)
