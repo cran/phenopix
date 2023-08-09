@@ -2,7 +2,7 @@
 \alias{CutSeason}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to cut time series by visual estimation 
+Cut time series by visual estimation 
 }
 \description{
 This function allows to cut a yearly time series where multiple

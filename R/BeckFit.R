@@ -1,5 +1,5 @@
 BeckFit <- function (ts, uncert=FALSE, nrep=100, ncores='all', sf=quantile(ts, probs=c(0.05, 0.95), na.rm=TRUE)) {
-	if (class(index(ts))[1]=='POSIXct') {
+	if (inherits(index(ts), 'POSIXct')) {
 		doy.vector <- as.numeric(format(index(ts), '%j'))
 		index(ts) <- doy.vector
 	}
@@ -36,7 +36,7 @@ BeckFit <- function (ts, uncert=FALSE, nrep=100, ncores='all', sf=quantile(ts, p
 			# randomly sample
 			noised <- ts + noise
 			fit.tmp <- try(FitDoubleLogBeck(noised, sf=sf))
-						if (class(fit.tmp)=='try-error') out.single <- list(predicted=rep(NA, length(ts)), params=rep(NA,6)) else {
+						if (inherits(fit.tmp, 'try-error')) out.single <- list(predicted=rep(NA, length(ts)), params=rep(NA,6)) else {
 			out.single <- list(predicted=fit.tmp$predicted, params=fit.tmp$params)
 		}
 			# ratio <- a/nrep*100

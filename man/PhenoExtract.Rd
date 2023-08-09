@@ -2,7 +2,7 @@
 \alias{PhenoExtract}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function that extracts phenological thresholds
+Generic function for the extraction of phenological thresholds
 }
 \description{
 This function extracts phenological thresholds according to different methods. 

@@ -5,7 +5,7 @@
 Converts from and to hydrological day of year 
 }
 \description{
-Converts from and to hydrological day of year
+Converts from and to hydrological day of year, i.e. setting Oct 1st as doy 1. 
 }
 \usage{
 hydrodoy(x, year, reverse=FALSE)

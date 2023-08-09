@@ -10,7 +10,7 @@ function(
     .normalize <- function(x, sf) (x-sf[1])/(sf[2]-sf[1])
         .backnormalize <- function(x, sf) (x+sf[1]/(sf[2]-sf[1]))*(sf[2]-sf[1])    
         if (any(is.na(x))) stop('NA in the time series are not allowed: fill them with e.g. na.approx()')
-        if (class(index(x))[1]=='POSIXct') {
+        if (inherits(index(x), 'POSIXct')) {
             doy.vector <- as.numeric(format(index(x), '%j'))
             index(x) <- doy.vector
             t <- index(x)

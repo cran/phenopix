@@ -2,7 +2,7 @@
 \alias{PhenoBP}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to extract breakpoints on a time series
+Extract breakpoints on a time series
 }
 \description{
 A function to extract breakpoints and confidence intervals on a time series

@@ -2,7 +2,7 @@
 \alias{convert}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to convert in data.frame a \code{zoo} or \code{ts} object  
+Convert in data.frame a \code{zoo} or \code{ts} object  
 }
 \description{
 This function converts an object of class \code{ts} or \code{zoo} in a data.frame with a column 

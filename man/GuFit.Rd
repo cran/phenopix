@@ -2,7 +2,7 @@
 \alias{GuFit}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to fit a double logisitic function to a vector according to Gu et al. (2003) 
+Fit a double logistic equation to a time series according to Gu et al. (2003) 
 }
 \description{
 This function fits a double logistic curve to observed values using the

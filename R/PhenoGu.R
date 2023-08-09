@@ -62,7 +62,7 @@ function(
 #     der1[is.infinite(der1)] <- 0   
 #     warning('Check your fitting because the first derivative contains NA or infinite values \n They were set at 0!')
 # }
-    if (class(der1)=='try-error' | length(which(is.na(der1)==TRUE))!=expectedNA | length(which(is.infinite(der1)==TRUE))!=0) {metrics <- rep(NA, 9)} else {
+    if (inherits(der1, 'try-error') | length(which(is.na(der1)==TRUE))!=expectedNA | length(which(is.infinite(der1)==TRUE))!=0) {metrics <- rep(NA, 9)} else {
     # if (length(which(is.na(der1)==TRUE))!=0 | length(which(is.infinite(der1)==TRUE))!=0) {metrics <- rep(NA, 9)} else {
     ## extract parameters
     parameters <- fit$params
@@ -104,7 +104,7 @@ function(
     if (length(sub.time)>3) {
         ##compute a linear fit
         plateau.lm <- try(lm(sub.gcc~sub.time))
-        if (class(plateau.lm)!='try-error') {
+        if (inherits(plateau.lm, 'try-error')) {
         M <- matrix( c(coef(plateau.lm)[2], coef(sl.eq)[2], -1,-1), nrow=2, ncol=2 )
         intercepts <- as.matrix( c(coef(plateau.lm)[1], coef(sl.eq)[1]))
         interception <- -solve(M) %*% intercepts
@@ -118,7 +118,7 @@ function(
     plateau.slope <- try(plateau.lm$coefficients[2], silent=TRUE)
     if (plateau.slope>0) DD <- old.DD
     plateau.intercept <- try(plateau.lm$coefficients[1], silent=TRUE)
-    if (class(plateau.slope)=='try-error') {
+    if (inherits(plateau.slope, 'try-error')) {
         plateau.slope <- NA
         plateau.intercept <- NA
         }

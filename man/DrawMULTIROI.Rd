@@ -7,7 +7,7 @@ Draw a Region of Interest
 \description{
 This function allows to draw one (or more) region(s) of interest (ROI) 
 on a jpeg image. After \code{phenopix} version 2.4 this function allows 
-to draw a region of interest consisting fo different polygons.  
+to draw a region of interest potentially consisting of different polygons.  
 }
 
 \usage{

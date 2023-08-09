@@ -1,7 +1,7 @@
 greenExplore <- function(x, ...) {
     ## a function to extract rmse
     .rmse <- function(fit) {
-        if (class(fit)=='try-error' || class(fit$fit)=='try-error' || all(is.na(extract(fit, 'fitted')))) return(NA) else {
+        if (inherits(fit, 'try-error') || inherits(fit$fit, 'try-error') || all(is.na(extract(fit, 'fitted')))) return(NA) else {
             fitted <- extract(fit, what='fitted')
             obs <- extract(fit, what='data')
             napos <- which(is.na(fitted))

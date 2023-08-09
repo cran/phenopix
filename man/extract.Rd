@@ -2,7 +2,7 @@
 \alias{extract}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to extract items from an object of class phenopix  
+Extract items from an object of class phenopix  
 }
 \description{
  This function allows to extract items from an object of class phenopix. 

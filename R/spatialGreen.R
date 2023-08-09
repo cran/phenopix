@@ -18,7 +18,7 @@ spatialGreen <- function(filtered.data, fit, threshold, ncores='all', log.file=N
             }
     #   require(zoo)
             fitted.tmp <- try(phenopix::greenProcess(na.approx(spatial.list[,a]), fit, threshold, plot=FALSE), silent=TRUE)
-            if (class(fitted.tmp)=='try-error') fitted.tmp <- NA
+            if (inherits(fitted.tmp, 'try-error')) fitted.tmp <- NA
             fitted.tmp <- fitted.tmp
     # # if (save) {
     #     filename <- paste0(path, '/fitted.tmp', a, '.Rdata')

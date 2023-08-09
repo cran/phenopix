@@ -1,6 +1,6 @@
 PhenoPlot <-
 function(data, metrics, add=FALSE, show.uncert=TRUE, ...) {
-	if (class(metrics)=='list') metrics <- metrics[[1]]
+	if (inherits(metrics, 'list')) metrics <- metrics[[1]]
 		## recognise series and understand wheter uncert exists
 		## data is output from [fitname]Fit functions
 		## metrics is output from PhenoExtract function

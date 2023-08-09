@@ -5,7 +5,7 @@
 Explore all possible fitting and theshold methods from the package phenopix
 }
 \description{
-This function allows to fast compute all fitting and thresholding methods on a given greennes time series.   
+This function allows to fast compute all fitting and thresholding methods on a given greenness time series.   
 }
 \usage{
 greenExplore(x, ...) 

@@ -10,7 +10,7 @@ Convert a region of interest object from the old structure to the new (phenopix 
 This function allows to convert the \code{roi.data} stored  in the \code{roi.data.Rdata} object built with 
 \code{phenopix} older than version 2.4 into the new structure better described in the details section. The 
 changed was needed because a new method for drawing a region of interest was conceived, which includes the 
-possibility of drawing multiple polygons for a single ROI. The new function that does the job is 
+possibility to draw multiple polygons for a single ROI. The new function that does the job is 
 \code{\link{DrawMULTIROI}}, which fully substitutes the old \code{DrawROI}.  
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }

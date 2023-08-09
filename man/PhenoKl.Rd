@@ -2,10 +2,10 @@
 \alias{PhenoKl}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to extract phenological thresholds according to Klosterman et al. 2014
+Extract phenophases from a fitted equation according to Klosterman et al. 2014
 }
 \description{
-A function to extract phenological thresholds according to Klosterman et al. 2014. 
+A function for the extraction of phenological thresholds according to Klosterman et al. 2014. 
 This is a rather internal function. Use PhenoExtract with method='klosterman' instead. 
 }
 \usage{

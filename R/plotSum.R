@@ -3,7 +3,7 @@ plotSum <- function(ts, sum, which, v=NULL, quantile=TRUE, ...) {
     data.to.plot <- sum[[which]][,col.pos]
     col.check <- which(apply(data.to.plot, 2, function(x) all(is.na(x) | is.infinite(x)))==FALSE)
     data.to.plot <- data.to.plot[,col.check]
-    if (class(index(ts))=='POSIXct') index(ts) <- as.numeric(format(index(ts), '%j'))
+    if (inherits(index(ts), 'POSIXct')) index(ts) <- as.numeric(format(index(ts), '%j'))
         plot(ts, type='n', ...)
     if (is.null(v)) v <- quantile(ts, na.rm=TRUE, probs=seq(0.2,0.8, length.out=ncol(data.to.plot)))
         for (a in 1:ncol(data.to.plot)) {

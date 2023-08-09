@@ -1,5 +1,5 @@
 convert <- function(x, year=NULL) {
-	if (class(x)!='ts' |  class(x)!='zoo')
+	if (!inherits(x, 'ts') |  !inherits(x, 'zoo'))
 	time.new <- index(x)
 	x.df <- as.data.frame(x)
 	rownames(x.df) <- NULL

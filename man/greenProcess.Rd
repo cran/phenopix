@@ -2,7 +2,7 @@
 \alias{greenProcess}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to fit a curve and extract thresholds from Phenological Data
+Fit a curve and extract thresholds from vegetation index time series
 }
 \description{
 This is a wrapper function that calls fitting functions and threshold functions 

@@ -1,6 +1,6 @@
 SplineFit <-
 function (ts, uncert=FALSE, nrep=100, df.factor=0.05, ncores='all', sf=quantile(ts, probs=c(0.05, 0.95), na.rm=TRUE)) {
-		if (class(index(ts))[1]=='POSIXct') {
+		if (inherits(index(ts), 'POSIXct')) {
 		doy.vector <- as.numeric(format(index(ts), '%j'))
 		index(ts) <- doy.vector
 	}

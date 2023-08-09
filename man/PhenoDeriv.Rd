@@ -2,11 +2,11 @@
 \alias{PhenoDeriv}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to extract thresholds
+Extract phenophases from a fitted equation with method Derivatives
 %%  ~~function to do ... ~~
 }
 \description{
-See PhenoDeriv from package greenbrown
+Extract phenophases from a fitted equation with method Derivatives
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

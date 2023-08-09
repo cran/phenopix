@@ -2,7 +2,7 @@
 \alias{PhenoTrs}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A fitting function
+A phenophase method based on fixed thresholds
 %%  ~~function to do ... ~~
 }
 \description{

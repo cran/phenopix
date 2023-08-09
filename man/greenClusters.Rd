@@ -2,7 +2,7 @@
 \alias{greenClusters}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to perform a cluster analysis on data in output from pixel-based phenology
+Performs a cluster analysis on data in output from pixel-based phenology
 }
 \description{
 A function to perform a cluster analysis using function \code{kmeans} on data in output from pixel-based phenology

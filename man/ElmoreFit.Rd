@@ -2,7 +2,7 @@
 \alias{ElmoreFit}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  A function to fit a double logisitic function to a vector according to Elmore et al. (2012)  
+ Fit a double logistic equation to a time series according to Elmore et al. (2012)  
 }
 \description{
 This function fits a double logistic curve to observed values using the

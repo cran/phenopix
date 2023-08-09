@@ -43,7 +43,7 @@ function(data,
 		thresholds <- NULL
 		for (a in 1:dim(uncertainty.data)[2]) {
 			tmp.column <- try(suppressWarnings(the.function(uncertainty.data[,a], fit=data$fit, uncert=uncert, breaks=breaks, sf=sf, ...)))
-			if (class(tmp.column)=='try-error') tmp.column <- rep(NA, nna)
+			if (inherits(tmp.column, 'try-error')) tmp.column <- rep(NA, nna)
 			thresholds <- cbind(thresholds, tmp.column)
 		}
 	# thresholds <- apply(uncertainty.data, 2, the.function, uncert=TRUE, fit=data$fit, breaks=breaks) 

@@ -2,7 +2,7 @@
 \alias{FitDoubleLogKlHeavy}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
- A function to fit a double logisitic function to a vector according to 
+ Fit a double logistic function to a vector according to 
  Klosterman et al. (2014) 
 }
 \description{

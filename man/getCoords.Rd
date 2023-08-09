@@ -2,10 +2,10 @@
 \alias{getCoords}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Extract given coordinates (in pixels) from a given JPEG image
+Extract coordinates (in pixels) of the exposure string from a given JPEG image
 }
 \description{
-This function allows to extract given coordinates (in pixels) from a given JPEG image   
+This function allows to extract coordinates (in pixels) of the exposure string from a given JPEG image   
 }
 \usage{
 getCoords(image)

@@ -2,10 +2,10 @@
 \alias{PhenoGu}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function to extract phenological thresholds according to Gu et al. 2009
+Extract phenophases from a fitted equation according to Gu et al. 2009
 }
 \description{
-A function to extract phenological thresholds according to Gu et al. 2009. 
+A function for the extraction of phenological thresholds according to Gu et al. 2009. 
 This is a rather internal function. Use PhenoExtract with method='gu' instead. 
 }
 \usage{

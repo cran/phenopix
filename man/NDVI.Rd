@@ -2,7 +2,7 @@
 \alias{NDVI}
 
 \title{
-Compute NDVI
+Compute NDVI from Phenocam color indices 
 %%  ~~function to do ... ~~
 }
 \description{
