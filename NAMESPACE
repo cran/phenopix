@@ -2,7 +2,6 @@ exportPattern("^[^\\.]")	#exports all variables that do not start with a period.
 import(zoo, jpeg, doParallel, foreach, iterators)
 importFrom(plyr, llply, ldply)
 importFrom(stringr,str_split)
-importFrom(bcp,bcp)
 importFrom(strucchange, breakpoints)
 importFrom(parallel, makeCluster, detectCores, stopCluster)
 importFrom(gtools, ask)
