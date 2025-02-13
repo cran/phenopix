@@ -6,7 +6,7 @@ DrawMULTIROI <- function(path_img_ref,path_ROIs,nroi=1,roi.names=NULL, file.type
  if (is.null(roi.names)) roi.names <- paste0('roi', 1:nroi)
  file <- list.files(path=path_img_ref,pattern = file.type)
     # img<-readJpeg(paste(path_img_ref,file,sep=""))
-    img <- brick(paste(path_img_ref,file,sep=""))
+    img <- raster::flip(brick(paste(path_img_ref,file,sep="")))
     roi.data <- list()
 
     for (i in seq(as.numeric(nroi))) {

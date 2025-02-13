@@ -1,5 +1,5 @@
 resizeImage <- function(image.in, image.out, roi.in, roi.out, npixels) {
-	r <- brick(image.in)
+	r <- raster::flip(brick(image.in))
 	aggregated.r <- aggregate(r,npixels)
 	reduced <- as.array(aggregated.r)
 	reduced2 <- reduced/255

@@ -62,7 +62,7 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
         # if (is.na(temp.date)) stop('Something wrong in your date!')
         # print (files[img])      
       # temp.img <- readJpeg(paste(img.path,'/',files[img],sep=''))
-        r <- brick(paste(img.path,'/',files[img],sep=''))
+        r <- raster::flip(brick(paste(img.path,'/',files[img],sep='')))
         ## to handle roi shift
         roi.in.loop <- temp.roi
         act.shift <- shift.matrix[img,,drop=TRUE]
@@ -170,7 +170,7 @@ extractVIs <- function(img.path,roi.path,vi.path=NULL,roi.name=NULL,plot=TRUE, b
     #     if (beg.date >= temp.date) next()
     #   }
     # print (files[img])
-    r <- brick(paste(img.path,'/',files[img],sep=''))
+    r <- raster::flip(brick(paste(img.path,'/',files[img],sep='')))
             roi.in.loop <- temp.roi
         # act.shift <- shift.matrix[img,,drop=TRUE]
         # shifted.polygon <- shift(temp.polygon, act.shift$x, act.shift$y)

@@ -1,7 +1,7 @@
 PrintROI <- function(path_img_ref,path_ROIs,which='all',col, file.type='.jpg') {	      
   file<-list.files(path=path_img_ref,pattern = file.type)
     # img<-readJpeg(paste(path_img_ref,file,sep=""))
-    img <- brick(paste(path_img_ref,file,sep=""))
+    img <- raster::flip(brick(paste(path_img_ref,file,sep="")))
      ## convert values from 0:1 to 0:255
     #output list with ROI data
     rois <- paste(path_ROIs, 'roi.data.Rdata', sep='')

@@ -2,7 +2,7 @@ editExposure <- function(exposures, image.path, which) {
   for (j in which) {
     name <- exposures[j,'image']
       to.load <- paste0(image.path,name, '.jpg')
-        image.target <- brick(to.load)
+        image.target <- raster::flip(brick(to.load))
         # image.target <- .binaryConvert(image.target)
         # cut.image <- image.target[coords['y1']:coords['y2'],
         # coords['x1']:coords['x2']]

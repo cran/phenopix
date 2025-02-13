@@ -1,17 +1,46 @@
 Package: phenopix
 Type: Package
 Title: Process Digital Images of a Vegetation Cover
-Version: 2.4.4
-Date: 2024-01-19
-Author: Gianluca Filippa, Edoardo Cremonese, Mirco Migliavacca, Marta Galvagno, Matthias Folker, Andrew D. Richardson, Enrico Tomelleri 
+Version: 2.4.5
+Date: 2025-02-10
+Authors@R: c(person(given = "Gianluca",
+                      family = "Filippa",
+                      role = c("aut", "cre"),
+                      email = "gian.filippa@gmail.com"),
+               person(given = "Edoardo",
+                      family = "Cremonese",
+                      role = "aut"),
+               person(given = "Mirco",
+                      family = "Migliavacca",
+                      role = "aut"),
+               person(given = "Marta",
+                      family = "Galvagno",
+                      role = "aut"),
+               person(given = "Matthias",
+                      family = "Folker",
+                      role = "aut"),
+               person(given = c("Andrew", "D."),
+                      family = "Richardson",
+                      role = "aut"),
+               person(given = "Enrico",
+                      family = "Tomelleri",
+                      role = "aut"))            
 Maintainer: Gianluca Filippa <gian.filippa@gmail.com>
 Description: A collection of functions to process digital images, depict greenness index trajectories and extract relevant phenological stages. 
 Depends: R (>= 2.15.3)
 Imports: zoo, plyr, jpeg, stringr (>= 1.0.0), strucchange, parallel,
-        foreach, doParallel, iterators, gtools, raster, sp
+        foreach, doParallel, iterators, gtools, raster, sp, terra (>=
+        1.8.21)
 License: GPL-2
 LazyLoad: yes
 NeedsCompilation: no
-Packaged: 2024-01-19 08:17:14 UTC; gian
+Packaged: 2025-02-13 15:59:06 UTC; gian
+Author: Gianluca Filippa [aut, cre],
+  Edoardo Cremonese [aut],
+  Mirco Migliavacca [aut],
+  Marta Galvagno [aut],
+  Matthias Folker [aut],
+  Andrew D. Richardson [aut],
+  Enrico Tomelleri [aut]
 Repository: CRAN
-Date/Publication: 2024-01-19 09:50:05 UTC
+Date/Publication: 2025-02-13 16:30:06 UTC

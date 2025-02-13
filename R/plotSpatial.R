@@ -2,7 +2,7 @@ plotSpatial <- function(data, param, roi.data.path, image.path, probs=c(0.01, 0.
 	roi.data <- NULL
 	load(roi.data.path)
 	if (is.data.frame(data)) {
-		r <- brick(image.path)
+		r <- raster::flip(brick(image.path))
 		plotRGB(r)
 		the.data <- data[,param]
 		quantiles <- quantile(the.data, probs, na.rm=TRUE)
@@ -22,7 +22,7 @@ plotSpatial <- function(data, param, roi.data.path, image.path, probs=c(0.01, 0.
 			x.tmp <- data[[a]][, param]
 			x[[a]] <- x.tmp
 		}
-		r <- brick(image.path)
+		r <- raster::flip(brick(image.path))
 		plotRGB(r)
 		phase <- roi.data[[1]]$mask
 		raster::values(phase) <- NA
